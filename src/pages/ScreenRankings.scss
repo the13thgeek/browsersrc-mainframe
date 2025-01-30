@@ -28,21 +28,25 @@ h3.player-name {
 
     .rank {
       position: absolute;
-      top: 15px;
-      left: 15px;
+      top: 0;
+      left: 0;
       background-color: #c00;
       color: #fff;
       font-weight: bold;
-      font-size: 30px;
-      padding: 5px 15px;
+      font-size: 40px;
+      padding: 5px 25px;
       z-index: 1;
-      border-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   
     &:nth-child(1) {
       grid-row: span 2;
       height: 540px;
+      .card-preview {
+        flex: 1;
+      }
       .content {
+        flex: 1;
         h3.player-name {
           margin-top: 75px;
           font-size: 40px;
@@ -65,7 +69,7 @@ h3.player-name {
     }
 
     .card-preview {
-      flex: 1;
+      flex: 3;
       background-position: 50% 50%;
       background-size: cover;
       background-repeat: no-repeat;
@@ -73,7 +77,7 @@ h3.player-name {
     }
 
     .content {
-      flex: 1;
+      flex: 4;
       display: flex;
       flex-direction: column;
       gap: 10px;

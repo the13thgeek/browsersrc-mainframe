@@ -12,7 +12,7 @@ h1, h2, h3 {
 
 .src-box {
   background-color: #369;
-  background-image: url('img/bg-rankings.jpg');
+  background-image: url('/browsersrc-mainframe/img/bg-rankings.jpg');
   background-position: 0 0;
   background-repeat: no-repeat;
   width: 1280px;
