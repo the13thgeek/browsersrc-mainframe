@@ -1,0 +1,39 @@
+.tscore {
+  background-color: #333;
+  color: #fff;
+  width: 875px;
+  height: 70px;
+  display: flex;
+
+  .team {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-around;
+
+    .name {
+      font-size: 25px;
+      text-shadow: #333 2px 2px 5px;
+    }
+    .score {
+      font-size: 35px;
+      background-color: #000;
+      color: #fff;
+      padding: 5px 15px;
+      border-radius: 15px;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    &.afb {
+      background-color: #e53935;
+    }
+    &.ccd {
+      background-color: #1e88e5;
+    }
+    &.sts {
+      background-color: #43a047;
+    }
+  }
+}
