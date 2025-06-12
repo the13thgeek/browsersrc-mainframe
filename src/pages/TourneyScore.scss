@@ -12,15 +12,34 @@
     gap: 10px;
     justify-content: space-around;
 
+    &.afb {
+      background-image: url('./img/bg-score-afb.png');
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+
+    &.ccd {
+      background-image: url('./img/bg-score-ccd.png');
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+
+    &.sts {
+      background-image: url('./img/bg-score-sts.png');
+      background-position: 0 0;
+      background-repeat: no-repeat;
+    }
+
     .name {
       font-size: 25px;
       text-shadow: #333 2px 2px 5px;
+      opacity: 0;
     }
     .score {
-      font-size: 35px;
+      font-size: 30px;
       background-color: #000;
       color: #fff;
-      padding: 5px 15px;
+      padding: 5px 10px;
       border-radius: 15px;
       text-align: right;
       font-weight: bold;
