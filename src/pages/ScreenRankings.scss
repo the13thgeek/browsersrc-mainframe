@@ -117,7 +117,7 @@ h3.player-name {
       }
 
       .card-preview {
-        flex: 3;
+        flex: 4;
         background-position: 50% 50%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -132,8 +132,11 @@ h3.player-name {
         align-items: center;
 
         h3.player-name {
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: bold;
           margin-top: 45px;
-          font-size: 30px;
+          letter-spacing: 0;
+          font-size: 45px;
         }
       }
 
