@@ -118,7 +118,7 @@ const ScreenRankings = () => {
             </div>
           </SwiperSlide>
           <SwiperSlide key='3' className='slide-item ranking'>
-            <h1 className="screen-name">Top Players 10-15</h1>
+            <h1 className="screen-name">Top Players 11-15</h1>
             <div className="ranking-container">
               { topPlayers.length > 0 && (topPlayers.slice(10,15)).map((player,idx) => (
                 <div className="item" key={idx+11}>
@@ -136,7 +136,7 @@ const ScreenRankings = () => {
               ))}
             </div>
           </SwiperSlide>
-          <SwiperSlide key='4' className='slide-item supersonic'>
+          {/* <SwiperSlide key='4' className='slide-item supersonic'>
             {scoreBoard && scoreBoard.map((team, idx) => (
               <div className={'team-box team-'+team.team_number} key={idx}>
                 <h4>{convertTeamName(team.team_number)}</h4>
@@ -150,7 +150,7 @@ const ScreenRankings = () => {
                 )}
               </div>
             ))}
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       )}
       

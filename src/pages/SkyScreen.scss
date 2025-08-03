@@ -1,0 +1,21 @@
+.skyscreen {
+  background-color: transparent;
+  color: #fff;
+  width: 875px;
+  height: 75px;
+  overflow: hidden;
+
+  .banner {
+    width: 100%;
+    height: 100%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+
+    &.mainframe {
+      background-image: url('/browsersrc-mainframe/img/banners/mainframe.png');
+    }
+    &.nobeans {
+      background-image: url('/browsersrc-mainframe/img/banners/nobeans.png');
+    }
+  }
+}

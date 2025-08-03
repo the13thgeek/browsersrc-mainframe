@@ -7,6 +7,7 @@ const Navigator = () => {
       <ul>
         <li><NavLink to='/'>Rankings</NavLink></li>
         <li><NavLink to='/tourney'>Tourney Score</NavLink></li>
+        <li><NavLink to='/skyscreen'>SkyScreen</NavLink></li>
       </ul>
     </nav>
   )

@@ -1,0 +1,52 @@
+.banner.gacha-list {
+  position: relative;
+  background-color: transparent;
+
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    position: inherit;
+  }
+
+  ul.card-list {
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: hidden;
+
+    li {
+      width: 80px;
+      flex-shrink: 0;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .instruction {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    font-size: 13px;
+    padding: 3px 15px;
+    margin: 0;
+    display: inline-block;
+    background-color: #369;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+  }
+}
