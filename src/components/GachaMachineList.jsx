@@ -17,7 +17,7 @@ const GachaMachineList = ({ cards }) => {
         <p>Loading...</p>
       )}
       <div className='instruction'>
-        <p>These card designs are available for pulls! Redeem <b>Mystery Card Pull</b> and try your luck!</p>
+        <p>Redeem <b>Mystery Card Pull</b> and try your luck on getting one of these!</p>
       </div>
     </div>
   )

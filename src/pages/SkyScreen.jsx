@@ -4,15 +4,35 @@ import GachaMachineList from '../components/GachaMachineList';
 import './SkyScreen.scss';
 
 const SkyScreen = () => {
-  const [index, setIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [cards, setCards] = useState([]);
-  const timeout = 15000;
-  const banners = [
-    <div className='banner mainframe' key={1}></div>,
-    <GachaMachineList key={2} cards={cards} />,
-    <div className='banner nobeans' key={3}></div>
+  const slides = [
+    { component: 
+      <div className='wrapper' key={currentSlide}>
+        <div className='banner stratos'></div>
+      </div>,
+      duration: 10000 },
+    { component: 
+      <div className='wrapper' key={currentSlide}>
+        <div className='banner mainframe'></div>
+      </div>,
+      duration: 10000 },
+    { component: 
+      <div className='wrapper' key={currentSlide}>
+        <GachaMachineList cards={cards} />
+      </div>, 
+      duration: 20000 },
+    { component: 
+      <div className="wrapper" key={currentSlide}>
+        <div className='banner hd2'></div>, 
+      </div>,
+      duration: 10000 },
+    { component: 
+      <div className="wrapper" key={currentSlide}>
+        <div className='banner nobeans'></div>, 
+      </div>,
+      duration: 10000 }
   ];
-
 
   useEffect(() => {
     async function fetchCards() {
@@ -33,17 +53,19 @@ const SkyScreen = () => {
       }
     }
     fetchCards();
+  },[]);
 
-    const loop = setInterval(() => {
-      setIndex((prev) => (prev+1) % banners.length);
-    }, timeout);
+  useEffect(() => {    
+    const loop = setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, slides[currentSlide].duration);
 
-    return () => clearInterval(loop);
-  }, []);
+    return () => clearTimeout(loop);
+  }, [currentSlide, slides]);
 
   return (
     <div className="skyscreen">
-      {banners[index]}
+      {slides[currentSlide].component}
     </div>
   )
 }

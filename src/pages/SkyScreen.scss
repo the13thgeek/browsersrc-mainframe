@@ -1,9 +1,24 @@
+@keyframes wipe-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .skyscreen {
   background-color: transparent;
   color: #fff;
   width: 875px;
   height: 75px;
   overflow: hidden;
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    animation: wipe-in 0.5s ease;
+  }
 
   .banner {
     width: 100%;
@@ -16,6 +31,12 @@
     }
     &.nobeans {
       background-image: url('/browsersrc-mainframe/img/banners/nobeans.png');
+    }
+    &.stratos {
+      background-image: url('/browsersrc-mainframe/img/banners/stratos.png');
+    }
+    &.hd2 {
+      background-image: url('/browsersrc-mainframe/img/banners/hd2.png');
     }
   }
 }
