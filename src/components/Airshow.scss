@@ -1,0 +1,40 @@
+.airshow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px;
+  background-color: transparent;
+  height: 100%;
+
+  .logo, .stats {
+    height: 100%;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .stat-table {
+    margin: 7px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    span {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &.field {
+        background: #333;
+        color: #fff;
+        padding: 4px 7px;
+      }
+      &.value {
+        background: #fff;
+        color: #333;
+        padding: 4px 7px;
+      }
+    }
+  }
+}

@@ -1,12 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import GachaMachineList from '../components/GachaMachineList';
+import Airshow from '../components/Airshow';
 import './SkyScreen.scss';
 
 const SkyScreen = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cards, setCards] = useState([]);
   const slides = [
+    { component: 
+      <div className='wrapper' key={currentSlide}>
+        <Airshow />
+      </div>,
+      duration: 60000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
         <div className='banner stratos'></div>
