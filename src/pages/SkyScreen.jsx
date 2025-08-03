@@ -11,27 +11,27 @@ const SkyScreen = () => {
       <div className='wrapper' key={currentSlide}>
         <div className='banner stratos'></div>
       </div>,
-      duration: 10000 },
+      duration: 15000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
         <div className='banner mainframe'></div>
       </div>,
-      duration: 10000 },
+      duration: 15000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
         <GachaMachineList cards={cards} />
       </div>, 
-      duration: 20000 },
+      duration: 30000 },
     { component: 
       <div className="wrapper" key={currentSlide}>
         <div className='banner hd2'></div>, 
       </div>,
-      duration: 10000 },
+      duration: 15000 },
     { component: 
       <div className="wrapper" key={currentSlide}>
         <div className='banner nobeans'></div>, 
       </div>,
-      duration: 10000 }
+      duration: 15000 }
   ];
 
   useEffect(() => {
