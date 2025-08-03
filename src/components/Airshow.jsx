@@ -10,7 +10,7 @@ const getRandomDelta = (value, min, max, step = 1) => {
 const Airshow = () => {
   const [stats, setStats] = useState({
     airspeed: 520,
-    altitude: 33000,
+    altitude: 36000,
     temp: -45,
     uplink: 87
   });
@@ -19,7 +19,7 @@ const Airshow = () => {
     const interval = setInterval(() => {
       setStats(prev => ({
         airspeed: getRandomDelta(prev.airspeed, 520, 590, 3),
-        altitude: getRandomDelta(prev.altitude, 33000, 41000, 100),
+        altitude: getRandomDelta(prev.altitude, 36000, 41000, 100),
         temp: getRandomDelta(prev.temp, -50, -40, 1),
         uplink: getRandomDelta(prev.uplink, 80, 100, 2),
       }));
