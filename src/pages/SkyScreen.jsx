@@ -14,6 +14,11 @@ const SkyScreen = () => {
       </div>,
       duration: 60000 },
     { component: 
+      <div className="wrapper" key={currentSlide}>
+        <div className='banner donkeykong'></div>, 
+      </div>,
+      duration: 15000 },
+    { component: 
       <div className='wrapper' key={currentSlide}>
         <div className='banner stratos'></div>
       </div>,
