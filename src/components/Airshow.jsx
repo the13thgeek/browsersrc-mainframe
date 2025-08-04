@@ -9,21 +9,21 @@ const getRandomDelta = (value, min, max, step = 1) => {
 
 const Airshow = () => {
   const [stats, setStats] = useState({
-    airspeed: 520,
-    altitude: 36000,
-    temp: -45,
-    uplink: 87
+    airspeed: getRandomDelta(525, 520, 590, 10),
+    altitude: getRandomDelta(36224, 36000, 41000, 100),
+    temp: getRandomDelta(-44, -55, -40, 4),
+    uplink: getRandomDelta(91, 80, 100, 3)
   });
 
   useEffect(() => {
     const interval = setInterval(() => {
       setStats(prev => ({
-        airspeed: getRandomDelta(prev.airspeed, 520, 590, 3),
+        airspeed: getRandomDelta(prev.airspeed, 520, 590, 10),
         altitude: getRandomDelta(prev.altitude, 36000, 41000, 100),
-        temp: getRandomDelta(prev.temp, -50, -40, 1),
-        uplink: getRandomDelta(prev.uplink, 80, 100, 2),
+        temp: getRandomDelta(prev.temp, -55, -40, 4),
+        uplink: getRandomDelta(prev.uplink, 80, 100, 3)
       }));
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval); // Clean up on unmount
   },[]);
