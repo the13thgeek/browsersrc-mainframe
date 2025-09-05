@@ -41,7 +41,7 @@ const Airshow = () => {
           </div>
           <div className="item">
             <span className="field">Altitude</span>
-            <span className="value">{stats.altitude} ft</span>
+            <span className="value">{stats.altitude.toLocaleString('en-US')} ft</span>
           </div>
           <div className="item">
             <span className="field">Outside Temp</span>

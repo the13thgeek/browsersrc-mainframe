@@ -13,16 +13,16 @@ const SkyScreen = () => {
         <Airshow />
       </div>,
       duration: 60000 },
-    { component: 
-      <div className="wrapper" key={currentSlide}>
-        <div className='banner donkeykong'></div>, 
-      </div>,
-      duration: 15000 },
-    { component: 
-      <div className='wrapper' key={currentSlide}>
-        <div className='banner stratos'></div>
-      </div>,
-      duration: 15000 },
+    // { component: 
+    //   <div className="wrapper" key={currentSlide}>
+    //     <div className='banner donkeykong'></div>, 
+    //   </div>,
+    //   duration: 15000 },
+    // { component: 
+    //   <div className='wrapper' key={currentSlide}>
+    //     <div className='banner stratos'></div>
+    //   </div>,
+    //   duration: 15000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
         <div className='banner mainframe'></div>
@@ -33,11 +33,11 @@ const SkyScreen = () => {
         <GachaMachineList cards={cards} />
       </div>, 
       duration: 30000 },
-    { component: 
-      <div className="wrapper" key={currentSlide}>
-        <div className='banner hd2'></div>, 
-      </div>,
-      duration: 15000 },
+    // { component: 
+    //   <div className="wrapper" key={currentSlide}>
+    //     <div className='banner hd2'></div>, 
+    //   </div>,
+    //   duration: 15000 },
     { component: 
       <div className="wrapper" key={currentSlide}>
         <div className='banner nobeans'></div>, 
