@@ -58,7 +58,7 @@ const SkyScreen = () => {
             }
           });
         const data = await res.json();
-        setCards(data.list);
+        setCards(data.data.cards);
       } catch(e) {
         console.error("Failed to fetch cards",e);
       }

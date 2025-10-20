@@ -37,7 +37,7 @@ const ScreenRankings = () => {
         ]);
         const dataTopPlayers = await topPlayers.json();
 
-        setTopPlayers(dataTopPlayers);
+        setTopPlayers(dataTopPlayers.data);
         setIsLoading(false);
       } catch(e) {
         console.log('Error: ' + e.message);
