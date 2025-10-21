@@ -36,8 +36,28 @@ const ScreenRankings = () => {
             })
         ]);
         const dataTopPlayers = await topPlayers.json();
+        const ranks = dataTopPlayers.data;
+        const minItems = 15;
 
-        setTopPlayers(dataTopPlayers.data);
+        while(ranks.length < minItems) {
+          ranks.push({
+            active_card: null,
+            exp: -1,
+            id: -1,
+            is_premium: 0,
+            level: 0,
+            levelProgress: 0,
+            sub_months: 0,
+            sysname: "standard",
+            team: null,
+            title: "n00b",
+            twitch_avatar: "/img/avatar-null.png",
+            twitch_display_name: "[no data]",
+            values: 0
+          });
+        }
+
+        setTopPlayers(ranks);
         setIsLoading(false);
       } catch(e) {
         console.log('Error: ' + e.message);
