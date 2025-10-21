@@ -51,7 +51,7 @@ const ScreenRankings = () => {
             sysname: "standard",
             team: null,
             title: "n00b",
-            twitch_avatar: "/img/avatar-null.png",
+            twitch_avatar: "img/avatar-null.png",
             twitch_display_name: "[no data]",
             values: 0
           });
