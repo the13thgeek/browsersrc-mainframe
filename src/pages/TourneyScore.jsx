@@ -10,7 +10,7 @@ const TourneyScore = () => {
   useEffect(() => {
       const fetchScores = async()  => {  
         try {
-          const response = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/showdown-scores`,
+          const response = await fetch(`https://the13thgeek-nodejs.fly.dev/tourney/scores`,
           //const response = await fetch(`http://localhost:8080/tourney/scores`,
             {
               method: 'POST',
