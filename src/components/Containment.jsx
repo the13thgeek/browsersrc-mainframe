@@ -14,6 +14,7 @@ const Containment = ({ event }) => {
 
   useEffect(() => {
     if (!event.type) {
+      clearInterval(intervalRef.current);
       setPhase("standby");
       return;
     }
