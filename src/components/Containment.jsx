@@ -25,7 +25,7 @@ const Containment = ({ event }) => {
       setPhase("breach");
     }
 
-    if (event === "containment") {
+    if (event.type === "containment") {
       clearInterval(intervalRef.current);
       setTimeLeft(TIMER_DURATION);
       setPhase("running");
