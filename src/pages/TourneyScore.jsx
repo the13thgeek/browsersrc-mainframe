@@ -5,6 +5,15 @@ import './TourneyScore.scss';
 const TourneyScore = () => {
   const [scoreBoard, setScoreBoard] = useState([]);
   const [timerEvent, setTimerEvent] = useState({ type: null, count: 0 });
+  const ALL_TEAMS = [
+    { team_number: 1, team_name: "Afterburner" },
+    { team_number: 2, team_name: "Concorde" },
+    { team_number: 3, team_name: "Stratos" }
+  ];
+  const DEFAULT_TEAM = { total_points: 0, mvp: null, mvp_points: null };
+
+  const getScore = (teamNumber) => scoreBoard.find((t) => t.team_number === teamNumber)?.total_points ?? 0;
+
   //const [effects, setEffects] = useState(null);
 
   useEffect(() => {
@@ -21,9 +30,15 @@ const TourneyScore = () => {
             });
           if(response) {
             const result = await response.json();
-            console.log('Fetched Scores: ', result.data.scores);
+            //console.log('Fetched Scores: ', result.data.scores);
+            const scores = result.data.scores;
 
-            setScoreBoard(result.data.scores);
+            const normalizedScores = ALL_TEAMS.map((team) => {
+              const found = scores.find((s) => s.team_number === team.team_number);
+              return found ?? { ...DEFAULT_TEAM, ...team };
+            });
+
+            setScoreBoard(normalizedScores);
             //setEffects(result.effects);
           }
         } catch(e) {
@@ -53,24 +68,21 @@ const TourneyScore = () => {
   return (
     <>
     <div className='tscore'>
-      {scoreBoard && scoreBoard.length >= 0 && (
-        <>
-        <div className={`team afb`}>
-          <div className="name">Afterburner</div>
-          <div className="score">{scoreBoard[0] ? scoreBoard[0].total_points : 0}</div>
-        </div>
-        <div className={`team ccd`}>
-          <div className="name">Concorde</div>
-          <div className="score">{scoreBoard[1] ? scoreBoard[1].total_points : 0}</div>
-        </div>
-        <div className={`team sts`}>
-          <div className="name">Stratos</div>
-          <div className="score">{scoreBoard[2] ? scoreBoard[2].total_points : 0}</div>
-        </div>
-        <Containment event={timerEvent} />
-        </>
-      )}
       
+      <div className={`team afb`}>
+        <div className="name">Afterburner</div>
+        <div className="score">{getScore(1)}</div>
+      </div>
+      <div className={`team ccd`}>
+        <div className="name">Concorde</div>
+        <div className="score">{getScore(2)}</div>
+      </div>
+      <div className={`team sts`}>
+        <div className="name">Stratos</div>
+        <div className="score">{getScore(3)}</div>
+      </div>
+      <Containment event={timerEvent} />
+    
     </div>
     {/* <pre>
       {JSON.stringify(scoreBoard, null, 2)}

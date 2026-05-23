@@ -12,8 +12,6 @@ const Containment = ({ event }) => {
   const [running, setRunning] = React.useState(false);
   const intervalRef = React.useRef(null);
 
-  console.log('Containment Event: ', event);
-
   useEffect(() => {
     if (!event.type) {
       setPhase("standby");
