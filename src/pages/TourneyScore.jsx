@@ -10,8 +10,8 @@ const TourneyScore = () => {
   useEffect(() => {
       const fetchScores = async()  => {  
         try {
-          //const response = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/showdown-scores`,
-          const response = await fetch(`http://localhost:8080/tourney/scores`,
+          const response = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/showdown-scores`,
+          //const response = await fetch(`http://localhost:8080/tourney/scores`,
             {
               method: 'POST',
               headers: {
@@ -34,8 +34,8 @@ const TourneyScore = () => {
       fetchScores();
   
       // Real-time updater
-      //const ws = new WebSocket("wss:///the13thgeek-nodejs.fly.dev");
-      const ws = new WebSocket("ws://localhost:8080");
+      const ws = new WebSocket("wss:///the13thgeek-nodejs.fly.dev");
+      //const ws = new WebSocket("ws://localhost:8080");
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
 
