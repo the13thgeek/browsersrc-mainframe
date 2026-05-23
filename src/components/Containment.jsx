@@ -17,6 +17,7 @@ const Containment = ({ event }) => {
     if (!event.type) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
+      setTimeLeft(null);
       setPhase("standby");
       return;
     }
@@ -38,6 +39,7 @@ const Containment = ({ event }) => {
   // Handles the interval separately when phase becomes "running"
   useEffect(() => {
     if (phase !== "running") return;
+    if (timeLeft === null) return;
 
     intervalRef.current = setInterval(() => {
       setTimeLeft(prev => {
