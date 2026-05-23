@@ -4,7 +4,7 @@ import './TourneyScore.scss';
 
 const TourneyScore = () => {
   const [scoreBoard, setScoreBoard] = useState([]);
-  const [timerEvent, setTimerEvent] = useState(null);
+  const [timerEvent, setTimerEvent] = useState({ type: null, count: 0 });
   //const [effects, setEffects] = useState(null);
 
   useEffect(() => {
@@ -40,12 +40,11 @@ const TourneyScore = () => {
         const data = JSON.parse(event.data);
 
         if(data.type === "HEIST_START" || data.type === "HEIST_DROP") {
-          setTimerEvent("start");
+          setTimerEvent(prev => ({ type: "start", count: prev.count + 1 }));
         }
         if(data.type === "SCORE_UPDATE") {
           fetchScores();
-          setTimerEvent(null);
-          setTimerEvent("containment");
+          setTimerEvent(prev => ({ type: "containment", count: prev.count + 1 }));
         }
       };
   

@@ -15,12 +15,12 @@ const Containment = ({ event }) => {
   console.log('Containment Event: ', event);
 
   useEffect(() => {
-    if (!event) {
+    if (!event.type) {
       setPhase("standby");
       return;
     }
 
-    if (event === "start") {
+    if (event.type === "start") {
       clearInterval(intervalRef.current);
       setPhase("breach");
     }
@@ -41,7 +41,7 @@ const Containment = ({ event }) => {
         });
       }, 1000);
     }
-  }, [event]);
+  }, [event.count]);
 
   const formatTime = (secs) => {
     const m = String(Math.floor(secs / 60)).padStart(2, "0");
