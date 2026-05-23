@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Containment.scss';
 
-// const TIMER_DURATION = 15 * 60;
-// const WARNING_THRESHOLD = 2 * 60;
-
-const TIMER_DURATION = 1.5 * 60;
-const WARNING_THRESHOLD = 10;
+const TIMER_DURATION = 15 * 60;
+const WARNING_THRESHOLD = 2 * 60;
 
 const Containment = ({ event }) => {
   const [phase, setPhase] = useState("standby"); // standby || breach || running
