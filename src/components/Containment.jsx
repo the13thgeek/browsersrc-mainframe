@@ -34,6 +34,11 @@ const Containment = ({ event }) => {
         setTimeLeft(TIMER_DURATION);
         break;
 
+      case "end_round":
+        setPhase("standby");
+        setTimeLeft(null);
+        break;
+
       default:
         break;
     }
@@ -88,7 +93,7 @@ const Containment = ({ event }) => {
 
   return (
     <div className="containment">
-      {phase === "standby" && (
+      {(phase === "standby" || phase === "end_round") && (
         <div className="standby">
           Standby
         </div>
