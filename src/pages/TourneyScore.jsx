@@ -62,7 +62,7 @@ const TourneyScore = () => {
           setTimerEvent(prev => ({ type: "containment", count: prev.count + 1 }));
         }
         if(data.type === "HEIST_END_ROUND") {
-          setTimerEvent(prev => ({ type: null, count: 0 }));
+          setTimerEvent(prev => ({ type: null, count: prev.count + 1 }));
         }
       };
   
