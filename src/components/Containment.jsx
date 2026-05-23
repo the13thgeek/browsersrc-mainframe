@@ -13,17 +13,12 @@ const Containment = ({ event }) => {
 
   const intervalRef = useRef(null);
 
-  //
-  // HANDLE INCOMING EVENTS
-  //
   useEffect(() => {
-    switch (event?.type) {
-      case undefined:
-      case null:
-        setPhase("standby");
-        setTimeLeft(null);
-        break;
+    // Always clear first
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
 
+    switch (event?.type) {
       case "start":
         setPhase("breach");
         setTimeLeft(null);
@@ -32,52 +27,33 @@ const Containment = ({ event }) => {
       case "containment":
         setPhase("running");
         setTimeLeft(TIMER_DURATION);
+
+        intervalRef.current = setInterval(() => {
+          setTimeLeft(prev => {
+            if (prev === null) return null;
+            if (prev <= 1) {
+              clearInterval(intervalRef.current);
+              intervalRef.current = null;
+              setPhase("breach");
+              return null;
+            }
+            return prev - 1;
+          });
+        }, 1000);
         break;
 
       case "end_round":
+      default:
         setPhase("standby");
         setTimeLeft(null);
         break;
-
-      default:
-        break;
     }
-  }, [event?.count]);
-
-  //
-  // HANDLE TIMER LIFECYCLE
-  //
-  useEffect(() => {
-    // Always clear previous timer first
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-
-    // Only run timer during running phase
-    if (phase !== "running" || timeLeft === null) {
-      return;
-    }
-
-    intervalRef.current = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev === null) return null;
-
-        if (prev <= 1) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-
-          setPhase("breach");
-          return null;
-        }
-
-        return prev - 1;
-      });
-    }, 1000);
 
     return () => {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     };
-  }, [phase, event?.count]);
+  }, [event?.count]);
 
   const formatTime = (secs) => {
     const m = String(Math.floor(secs / 60)).padStart(2, "0");
