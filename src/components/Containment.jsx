@@ -45,7 +45,7 @@ const Containment = ({ event }) => {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
           setPhase("breach");
-          return TIMER_DURATION;
+          return null;
         }
         return prev - 1;
       });
