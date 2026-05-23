@@ -12,8 +12,8 @@ const Containment = ({ event }) => {
   const [running, setRunning] = React.useState(false);
   const intervalRef = React.useRef(null);
 
+  // Handles type changes
   useEffect(() => {
-
     if (!event.type) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
@@ -23,26 +23,40 @@ const Containment = ({ event }) => {
 
     if (event.type === "start") {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
       setPhase("breach");
     }
 
     if (event.type === "containment") {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
       setTimeLeft(TIMER_DURATION);
       setPhase("running");
-
-      intervalRef.current = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(intervalRef.current);
-            setPhase("breach");
-            return TIMER_DURATION;
-          }
-          return prev - 1;
-        });
-      }, 1000);
     }
   }, [event.type, event.count]);
+
+  // Handles the interval separately when phase becomes "running"
+  useEffect(() => {
+    if (phase !== "running") return;
+
+    intervalRef.current = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+          setPhase("breach");
+          return TIMER_DURATION;
+        }
+        return prev - 1;
+      });
+    },
+  1000);
+
+  return () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  };
+}, [phase]);
 
   const formatTime = (secs) => {
     const m = String(Math.floor(secs / 60)).padStart(2, "0");
