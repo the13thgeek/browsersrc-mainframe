@@ -20,6 +20,8 @@ const Containment = ({ event }) => {
     if (!event.type) {
       setTimeLeft(null);
       setPhase("standby");
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
       return;
     }
 
