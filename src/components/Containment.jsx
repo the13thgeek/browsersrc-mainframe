@@ -13,8 +13,11 @@ const Containment = ({ event }) => {
   const intervalRef = React.useRef(null);
 
   useEffect(() => {
+    if (intervalRef.current) return;
+
     if (!event.type) {
       clearInterval(intervalRef.current);
+      intervalRef.current = null;
       setPhase("standby");
       return;
     }
@@ -40,7 +43,7 @@ const Containment = ({ event }) => {
         });
       }, 1000);
     }
-  }, [event.count]);
+  }, [event.type, event.count]);
 
   const formatTime = (secs) => {
     const m = String(Math.floor(secs / 60)).padStart(2, "0");
