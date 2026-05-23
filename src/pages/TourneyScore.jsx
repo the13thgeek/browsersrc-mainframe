@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Containment from '../components/Containment';
 import './TourneyScore.scss';
 
 const TourneyScore = () => {
   const [scoreBoard, setScoreBoard] = useState([]);
+  const [timerEvent, setTimerEvent] = useState(null);
   //const [effects, setEffects] = useState(null);
 
   useEffect(() => {
@@ -37,8 +39,12 @@ const TourneyScore = () => {
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
 
+        if(data.type === "HEIST_START" || data.type === "HEIST_DROP") {
+          setTimerEvent("start");
+        }
         if(data.type === "SCORE_UPDATE") {
           fetchScores();
+          setTimerEvent("containment");
         }
       };
   
@@ -61,6 +67,7 @@ const TourneyScore = () => {
           <div className="name">Stratos</div>
           <div className="score">{scoreBoard[2] ? scoreBoard[2].total_points : 0}</div>
         </div>
+        <Containment event={timerEvent} />
         </>
       )}
       

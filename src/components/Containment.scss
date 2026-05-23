@@ -1,0 +1,91 @@
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes static {
+  0%   { transform: translate(0, 0) skew(0deg, 0deg);    filter: brightness(1) contrast(1); }
+  15%  { transform: translate(-1px, 1px) skew(-0.3deg, 0deg); filter: brightness(1.05) contrast(1.1); }
+  30%  { transform: translate(1px, -1px) skew(0.3deg, 0deg);  filter: brightness(0.95) contrast(1.2); }
+  45%  { transform: translate(-1px, -1px) skew(0deg, 0.3deg); filter: brightness(1.1) contrast(0.9); }
+  60%  { transform: translate(1px, 1px) skew(0.2deg, 0deg);   filter: brightness(0.9) contrast(1.15); }
+  75%  { transform: translate(0, -1px) skew(-0.2deg, 0.2deg); filter: brightness(1.05) contrast(1.05); }
+  100% { transform: translate(0, 0) skew(0deg, 0deg);    filter: brightness(1) contrast(1); }
+}
+
+.containment {
+  width: 120px;
+  background-color: #000;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    padding: 0;
+    margin: 0;
+    line-height: 10px;
+    display: none;
+  }
+
+  .standby {
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    display: flex;
+    color: #ff0;
+    padding: 5px 10px;
+    font-size: 30px;
+    line-height: 22px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  .breach {
+    display: flex;
+    background-color: #c00;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: opacity 0s;
+    animation: blink 0.5s infinite;
+  }
+
+  .timer {
+    font-size: 40px;
+    line-height: 22px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    color: #6f6;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &.warning {
+      color: #e60;
+      animation: static 0.1s infinite;
+    }
+  }
+
+  .status {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    line-height: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #eee;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+
+    &.warning {
+      background-color: #e00;
+      color: #fff;
+    }
+  }
+}
