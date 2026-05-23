@@ -17,22 +17,33 @@
     gap: 10px;
     justify-content: space-around;
 
-    &.afb {
-      background-image: url('/browsersrc-mainframe/img/bg-score-afb.png');
+    & > * {
       background-position: 0 0;
       background-repeat: no-repeat;
+    }
+
+    &.afb {
+      background-image: url('/browsersrc-mainframe/img/bg-score-afb.png');
     }
 
     &.ccd {
       background-image: url('/browsersrc-mainframe/img/bg-score-ccd.png');
-      background-position: 0 0;
-      background-repeat: no-repeat;
     }
 
     &.sts {
       background-image: url('/browsersrc-mainframe/img/bg-score-sts.png');
-      background-position: 0 0;
-      background-repeat: no-repeat;
+    }
+
+    &.dlt {
+      background-image: url('/browsersrc-mainframe/img/bg-score-dlt.png');
+    }
+
+    &.sgm {
+      background-image: url('/browsersrc-mainframe/img/bg-score-sgm.png');
+    }
+
+    &.zta {
+      background-image: url('/browsersrc-mainframe/img/bg-score-zta.png');
     }
 
     &.grounded {
