@@ -13,7 +13,6 @@ const Containment = ({ event }) => {
   const intervalRef = React.useRef(null);
 
   useEffect(() => {
-    if (intervalRef.current) return;
 
     if (!event.type) {
       clearInterval(intervalRef.current);
