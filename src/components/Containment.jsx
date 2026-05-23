@@ -53,13 +53,13 @@ const Containment = ({ event }) => {
     intervalRef.current = null;
 
     // Only run timer during running phase
-    if (phase !== "running" || timeLeft == null) {
+    if (phase !== "running" || timeLeft === null) {
       return;
     }
 
     intervalRef.current = setInterval(() => {
       setTimeLeft(prev => {
-        if (prev == null) return null;
+        if (prev === null) return null;
 
         if (prev <= 1) {
           clearInterval(intervalRef.current);
