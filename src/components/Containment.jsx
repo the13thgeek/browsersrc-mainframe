@@ -56,7 +56,7 @@ const Containment = ({ event }) => {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
   };
-}, [phase]);
+}, [phase, event.count]);
 
   const formatTime = (secs) => {
     const m = String(Math.floor(secs / 60)).padStart(2, "0");
