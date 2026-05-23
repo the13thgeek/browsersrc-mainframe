@@ -44,6 +44,7 @@ const TourneyScore = () => {
         }
         if(data.type === "SCORE_UPDATE") {
           fetchScores();
+          setTimerEvent(null);
           setTimerEvent("containment");
         }
       };
