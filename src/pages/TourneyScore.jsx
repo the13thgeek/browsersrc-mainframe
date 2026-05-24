@@ -39,7 +39,7 @@ const TourneyScore = () => {
     const fetchScores = async () => {
       console.log(`[${ts()}] fetchScores() called`);
       try {
-        const response = await fetch(`http://localhost:8080/tourney/scores`, {
+        const response = await fetch(`https://the13thgeek-nodejs.fly.dev/tourney/scores`, {
           method: 'POST',
           headers: {
             "x-api-key": '03811255-e942-4003-bc83-504857c32885',
@@ -63,7 +63,7 @@ const TourneyScore = () => {
 
     fetchScores();
 
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket("wss://the13thgeek-nodejs.fly.dev");
     ws.onmessage = (event) => {
       if (!active) return;
       (async () => {
