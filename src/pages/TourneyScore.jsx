@@ -71,21 +71,21 @@ const TourneyScore = () => {
         console.log(`[${ts()}] WS received: ${data.type}`);
 
         if (data.type === "HEIST_GRAB" || data.type === "HEIST_STEAL_SUCCESS" || data.type === "HEIST_PASS") {
-          await fetchScores();
+          fetchScores();
           console.log(`[${ts()}] → triggerReset()`);
           triggerReset();
         }
         else if (data.type === "HEIST_STEAL_FALSE") {
-          await fetchScores();
+          fetchScores();
           console.log(`[${ts()}] → no reset`);
         }
         else if (data.type === "HEIST_END_ROUND") {
-          await fetchScores();
+          fetchScores();
           console.log(`[${ts()}] → MODE.STANDBY`);
           setTimerMode(MODE.STANDBY);
         }
         else if (data.type === "HEIST_DROP" || data.type === "HEIST_START") {
-          await fetchScores();
+          fetchScores();
           console.log(`[${ts()}] → MODE.BREACH`);
           setTimerMode(MODE.BREACH);
         }
