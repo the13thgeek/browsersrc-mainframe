@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import './ContainmentTimer.scss';
 
-//const TIMER_DURATION_SEC = 15 * 60; // 15 minutes
-//const WARNING_THRESHOLD_SEC = 13 * 60; // 13 minutes
-const TIMER_DURATION_SEC = 1.25 * 60;
-const WARNING_THRESHOLD_SEC = 30;
+const TIMER_DURATION_SEC = 15 * 60; // 15 minutes
+const WARNING_THRESHOLD_SEC = 13 * 60; // 13 minutes
 
 export const MODE = {
   STANDBY: 'STANDBY',
@@ -37,7 +35,7 @@ const ContainmentTimer = ({ mode, onBreach }) => {
         if (prev <= 1) {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
-          onBreach?.();
+          setTimeout(() => onBreach?.(),10);
           return 0;
         }
         return prev - 1;
@@ -63,14 +61,29 @@ const ContainmentTimer = ({ mode, onBreach }) => {
   useEffect(() => () => stopTimer(), [stopTimer]);
 
   const isRunning = mode === MODE.CONTAIN || mode === MODE.RESET;
-  const isWarning = isRunning && timeLeft <= WARNING_THRESHOLD_SEC;
+  //const isWarning = isRunning && timeLeft <= WARNING_THRESHOLD_SEC;
+  const isCritical = isRunning && timeLeft <= 30;
+  const isWarning  = isRunning && !isCritical && timeLeft <= WARNING_THRESHOLD_SEC;
+
 
   return (
     <div className="containment-timer">
-      <div className={`timer-indicator ${isWarning ? 'warning' : ''}`}>
-      {formatTime(timeLeft)}
-      </div>
-      <div className="mode-display">{mode}</div>
+      { isRunning && (
+        <div className={`timer-indicator ${isCritical ? 'critical' : isWarning ? 'warning' : isRunning ? 'running' : ''}`}>
+          {formatTime(timeLeft)}
+        </div>
+      )}
+      { mode === MODE.STANDBY && (
+        <div className="mode-display standby">Standby</div>
+      )}
+      { (mode === MODE.RESET || mode === MODE.CONTAIN) && (
+        <div className={`mode-display contain ${isCritical ? 'critical' : isWarning ? 'warning' : isRunning ? 'running' : ''}`}>
+         {isCritical ? 'Critical' : isWarning ? 'Unstable' : isRunning ? 'Containment' : ''}
+        </div>
+      )}
+      { mode === MODE.BREACH && (
+        <div className="mode-display breach">Breach</div>
+      )}
     </div>
   )
 }

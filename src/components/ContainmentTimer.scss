@@ -1,0 +1,141 @@
+@keyframes breathe {
+  0%,100%{ text-shadow: 0 0 8px rgba(0,212,170,0.4), 0 0 20px rgba(0,212,170,0.15); }
+  50%    { text-shadow: 0 0 18px rgba(0,212,170,0.8), 0 0 40px rgba(0,212,170,0.35), 0 0 60px rgba(0,212,170,0.1); }
+}
+
+@keyframes scan {
+  from { top: 0; }
+  to   { top: 100%; }
+}
+
+@keyframes glitch{
+  0%,100%{
+    text-shadow:
+      -2px 0 rgba(255,60,60,0.7),
+       2px 0 rgba(0,200,255,0.7);
+    transform:translateX(0);
+  }
+  7%  { transform:translateX(-3px); text-shadow: 3px 0 rgba(255,60,60,0.8),  -3px 0 rgba(0,200,255,0.8); }
+  8%  { transform:translateX(3px);  text-shadow: -3px 0 rgba(255,60,60,0.8),  3px 0 rgba(0,200,255,0.8); }
+  9%  { transform:translateX(0); }
+  40% { transform:translateX(0); text-shadow: -2px 0 rgba(255,60,60,0.7), 2px 0 rgba(0,200,255,0.7); }
+  41% { transform:translateX(2px);  text-shadow: -4px 0 rgba(255,60,60,0.9),  2px 0 rgba(0,200,255,0.5); }
+  42% { transform:translateX(-1px); text-shadow:  4px 0 rgba(255,60,60,0.5), -2px 0 rgba(0,200,255,0.9); }
+  43% { transform:translateX(0); }
+  75% { transform:translateX(0); }
+  76% { transform:translateX(-2px); text-shadow: 3px 0 rgba(255,60,60,0.7), -1px 0 rgba(0,200,255,0.7); }
+  77% { transform:translateX(0); }
+}
+
+@keyframes glitch-critical{
+  0%,100%{ transform:translateX(0);   text-shadow: -3px 0 rgba(255,60,60,0.9),  3px 0 rgba(0,200,255,0.9); }
+  10%    { transform:translateX(-4px); text-shadow:  5px 0 rgba(255,60,60,1),   -2px 0 rgba(0,200,255,0.6); }
+  11%    { transform:translateX(4px);  text-shadow: -5px 0 rgba(255,60,60,0.6),  5px 0 rgba(0,200,255,1); }
+  12%    { transform:translateX(-2px); text-shadow:  2px 0 rgba(255,200,0,0.8), -4px 0 rgba(0,200,255,0.8); }
+  13%    { transform:translateX(0); }
+  33%    { transform:translateX(0); }
+  34%    { transform:translateX(5px);  text-shadow: -6px 0 rgba(255,60,60,1),    3px 0 rgba(0,200,255,0.4); }
+  35%    { transform:translateX(-5px); text-shadow:  6px 0 rgba(255,60,60,0.4), -3px 0 rgba(0,200,255,1); }
+  36%    { transform:translateX(2px); }
+  37%    { transform:translateX(0); }
+  60%    { transform:translateX(0); }
+  61%    { transform:translateX(-3px); text-shadow: 4px 0 rgba(255,200,0,0.9), -4px 0 rgba(0,200,255,0.7); }
+  62%    { transform:translateX(3px);  text-shadow:-4px 0 rgba(255,60,60,0.7),   4px 0 rgba(255,200,0,0.9); }
+  63%    { transform:translateX(0); }
+  85%    { transform:translateX(0); }
+  86%    { transform:translateX(-6px); text-shadow: 7px 0 rgba(255,60,60,1), -2px 0 rgba(0,200,255,0.5); clip-path:inset(0 0 40% 0); }
+  87%    { transform:translateX(6px);  text-shadow:-7px 0 rgba(0,200,255,1),  2px 0 rgba(255,60,60,0.5); clip-path:inset(40% 0 0 0); }
+  88%    { transform:translateX(0); clip-path:none; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+.containment-timer {
+  width: 140px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+
+  .timer-indicator {
+    position: relative;
+    font-size: 40px;
+    line-height: 30px;
+    font-weight: bold;
+    overflow: visible;
+    //overflow-y: hidden;
+    z-index: 2;
+    color: #00d4aa;
+    transition: color 0.4s;
+    animation: breathe 2.8s ease-in-out infinite;
+
+    &.running::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 212, 170, 0.6) 40%,
+        rgba(0, 212, 170, 0.9) 50%,
+        rgba(0, 212, 170, 0.6) 60%,
+        transparent 100%
+      );
+      animation: scan 1.4s linear infinite;
+      pointer-events: none;
+    }
+
+    &.warning {
+      color:#f0a020;
+      animation:glitch 1.8s steps(1) infinite;
+    }
+
+    &.critical{
+      color:#e03030;
+      animation:glitch-critical 0.9s steps(1) infinite;
+    }
+  }
+
+  .mode-display {
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+
+    &.standby {
+      padding: 5px 15px;
+      font-size: 20px;
+      background-color: #ff0;
+    }
+    &.breach {
+      padding: 5px 15px;
+      font-size: 21px;
+      background-color: #e03030;
+      color: #fff;
+      transition: opacity 0.1s;
+      animation: blink 0.4s infinite;
+    }
+
+    &.warning {
+      background-color: #f0a020;
+    }
+
+    &.critical {
+      background-color: #e03030;
+      color: #fff;
+    }
+  }
+}
