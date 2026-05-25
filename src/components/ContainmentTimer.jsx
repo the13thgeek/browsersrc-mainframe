@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import './ContainmentTimer.scss';
 
 const TIMER_DURATION_SEC = 15 * 60; // 15 minutes
-const WARNING_THRESHOLD_SEC = 13 * 60; // 13 minutes
+const WARNING_THRESHOLD_SEC = 2 * 60; // 13 minutes
 
 export const MODE = {
   STANDBY: 'STANDBY',
