@@ -166,7 +166,7 @@ h3.player-name {
     }
   }
 
-  &.supersonic {
+  &.heist {
     background-color: #000;
     color: #fff;
     display: grid;
@@ -188,7 +188,7 @@ h3.player-name {
       }
 
       .mascot-bg {
-        aspect-ratio: 1/1.05;
+        aspect-ratio: 1/1.35;
         width: 100%;
         background-position: 50% 10%;   
         background-repeat: no-repeat;
@@ -198,21 +198,21 @@ h3.player-name {
       }
 
       &.team-1 {
-        background-color: #E53935;
+        background-color: #6b008e;
         .mascot-bg {
-          background-image: url('/browsersrc-mainframe/img/mascot-afterburner.jpg');
+          background-image: url('/browsersrc-mainframe/img/mascot-delta.jpg');
         }
       }
       &.team-2 {
-        background-color: #1E88E5;
+        background-color: #006b6b;
         .mascot-bg {
-          background-image: url('/browsersrc-mainframe/img/mascot-concorde.jpg');
+          background-image: url('/browsersrc-mainframe/img/mascot-sigma.jpg');
         }
       }
       &.team-3 {
-        background-color: #43A047;
+        background-color: #cc9900;
         .mascot-bg {
-          background-image: url('/browsersrc-mainframe/img/mascot-stratos.jpg');
+          background-image: url('/browsersrc-mainframe/img/mascot-zeta.jpg');
         }
       }
       &:last-child {
