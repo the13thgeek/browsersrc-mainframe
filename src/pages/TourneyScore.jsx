@@ -80,7 +80,7 @@ const TourneyScore = () => {
           console.log(`[${ts()}] → no reset`);
         }
         else if (data.type === "HEIST_END_ROUND") {
-          setTimeout(() => fetchScores(), 300);
+          setTimeout(() => fetchScores(), 5300);
           console.log(`[${ts()}] → MODE.STANDBY`);
           setTimerMode(MODE.STANDBY);
         }
