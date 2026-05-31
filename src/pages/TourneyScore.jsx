@@ -25,9 +25,9 @@ const TourneyScore = () => {
   }, []);
 
   const ALL_TEAMS = [
-    { team_number: 1, team_name: "Afterburner" },
-    { team_number: 2, team_name: "Concorde" },
-    { team_number: 3, team_name: "Stratos" }
+    { team_number: 1, team_name: "Delta Syndicate" },
+    { team_number: 2, team_name: "Sigma Collective" },
+    { team_number: 3, team_name: "Zeta Enclave" }
   ];
   const DEFAULT_TEAM = { total_points: 0, mvp: null, mvp_points: null };
 
@@ -102,16 +102,16 @@ const TourneyScore = () => {
   return (
     <>
       <div className='tscore'>
-        <div className={`team afb`}>
-          <div className="name">Afterburner</div>
+        <div className={`team dlt`}>
+          <div className="name">Delta Syndicate</div>
           <div className="score">{getScore(1)}</div>
         </div>
-        <div className={`team ccd`}>
-          <div className="name">Concorde</div>
+        <div className={`team sgm`}>
+          <div className="name">Sigma Collective</div>
           <div className="score">{getScore(2)}</div>
         </div>
-        <div className={`team sts`}>
-          <div className="name">Stratos</div>
+        <div className={`team zta`}>
+          <div className="name">Zeta Enclave</div>
           <div className="score">{getScore(3)}</div>
         </div>
         <ContainmentTimer mode={timerMode} onBreach={handleBreach} />
