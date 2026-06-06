@@ -1,0 +1,65 @@
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.1; }
+}
+
+.containment-timer-min {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #11131a;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 0;
+  height: 38px;
+  position: relative;
+  overflow: hidden;
+  width: 115px;
+
+  // ::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0; bottom: 0; left: 0;
+  //   width: 5px;
+  //   background: green;
+  // }
+
+  .timer-indicator {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 22px;
+    line-height: 1;
+    color: #f0f2ff;
+    transition: color 0.4s, text-shadow 0.4s;
+
+    &.running {
+      color: #00d4aa;
+      text-shadow: 0 0 8px #00d4aa;
+    }
+
+    &.warning {
+      color: #ffb300;
+      text-shadow: 0 0 8px #ffb300;
+    }
+
+    &.critical {
+      color: #ff3d00;
+      text-shadow: 0 0 8px #ff3d00;
+    }
+  }
+
+  .mode-display {
+    font-family: 'Share Tech Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+
+    &.standby {
+      color: yellow;
+    }
+    &.breach {
+      color: red;
+      animation: blink 0.3s step-start infinite;
+    }
+  }
+}

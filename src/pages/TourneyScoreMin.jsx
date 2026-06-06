@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import ContainmentTimer, { MODE } from '../components/ContainmentTimer';
-import './TourneyScore.scss';
+import ContainmentTimerMin, { MODE } from '../components/ContainmentTimerMin';
+import './TourneyScoreMin.scss';
 
 const ts = () => `+${Date.now() % 100000}ms`;
 
-const TourneyScore = () => {
+const TourneyScoreMin = () => {
   const [scoreBoard, setScoreBoard] = useState([]);
   const [timerMode, setTimerMode] = useState(MODE.STANDBY);
   const resetTimeoutRef = useRef(null);
@@ -101,7 +101,7 @@ const TourneyScore = () => {
 
   return (
     <>
-      <div className='tscore'>
+      <div className='tscore-min'>
         <div className={`team dlt`}>
           <div className="name">Delta Syndicate</div>
           <div className="score">{getScore(1)}</div>
@@ -114,10 +114,10 @@ const TourneyScore = () => {
           <div className="name">Zeta Enclave</div>
           <div className="score">{getScore(3)}</div>
         </div>
-        <ContainmentTimer mode={timerMode} onBreach={handleBreach} />
+        <ContainmentTimerMin mode={timerMode} onBreach={handleBreach} />
       </div>
     </>
   );
 };
 
-export default TourneyScore;
+export default TourneyScoreMin;

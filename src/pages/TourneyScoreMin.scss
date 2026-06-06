@@ -1,0 +1,72 @@
+:root {
+  --dlt:      #9b6dff;
+  --dlt-dim:  #5e3d99;
+  --dlt-glow: rgba(155,109,255,0.22);
+  --sgm:      #2dd4b0;
+  --sgm-dim:  #1a7d6a;
+  --sgm-glow: rgba(45,212,176,0.22);
+  --zta:      #d4b84a;
+  --zta-dim:  #8a7420;
+  --zta-glow: rgba(212,184,74,0.22);
+  --bg:       #0a0b0f;
+  --surface:  #11131a;
+  --border:   rgba(255,255,255,0.07);
+  --muted:    rgba(255,255,255,0.32);
+  --white:    #f0f2ff;
+}
+
+.tscore-min {
+  //background-color: #000;
+  color: #fff;
+  display: flex;
+  gap: 1rem;
+  width: 950px;
+  height: 40px;  
+
+  .team {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0 18px;
+    height: 38px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+ 
+  .team::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 5px;
+  }
+ 
+  .team.dlt::before { background: var(--dlt); }
+  .team.sgm::before { background: var(--sgm); }
+  .team.zta::before { background: var(--zta); }
+
+  .team {
+    .score {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 32px;
+      line-height: 1;
+    }
+  }
+
+  .name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+  }
+  .score {
+    margin-left: auto;
+  }
+}
