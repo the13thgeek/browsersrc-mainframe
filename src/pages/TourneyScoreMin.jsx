@@ -75,7 +75,7 @@ const TourneyScoreMin = () => {
           console.log(`[${ts()}] → triggerReset()`);
           triggerReset();
         }
-        else if (data.type === "HEIST_STEAL_FALSE") {
+        else if (data.type === "HEIST_STEAL_FALSE" || data.type === "HEIST_HOLD_TICK") {
           setTimeout(() => fetchScores(), 300);
           console.log(`[${ts()}] → no reset`);
         }
