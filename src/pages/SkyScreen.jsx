@@ -18,11 +18,11 @@ const SkyScreen = () => {
     //     <div className='banner donkeykong'></div>, 
     //   </div>,
     //   duration: 15000 },
-    // { component: 
-    //   <div className='wrapper' key={currentSlide}>
-    //     <div className='banner stratos'></div>
-    //   </div>,
-    //   duration: 15000 },
+    { component: 
+      <div className='wrapper' key={currentSlide}>
+        <div className='banner sigma'></div>
+      </div>,
+      duration: 15000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
         <div className='banner mainframe'></div>
@@ -48,7 +48,7 @@ const SkyScreen = () => {
   useEffect(() => {
     async function fetchCards() {
       try {
-        const res = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/get-available-cards`,
+        const res = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/get-available-nameplates`,
         //const response = await fetch(`http://localhost:8080/mainframe/showdown-scores`,
           {
             method: 'POST',
