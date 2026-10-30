@@ -6,13 +6,13 @@ import './SkyScreen.scss';
 
 const SkyScreen = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [cards, setCards] = useState([]);
+  const [nameplates, setNameplates] = useState([]);
   const slides = [
     { component: 
       <div className='wrapper' key={currentSlide}>
         <Airshow />
       </div>,
-      duration: 60000 },
+      duration: 10000 },
     // { component: 
     //   <div className="wrapper" key={currentSlide}>
     //     <div className='banner donkeykong'></div>, 
@@ -30,7 +30,7 @@ const SkyScreen = () => {
       duration: 15000 },
     { component: 
       <div className='wrapper' key={currentSlide}>
-        <GachaMachineList cards={cards} />
+        <GachaMachineList nameplates={nameplates} />
       </div>, 
       duration: 30000 },
     // { component: 
@@ -46,7 +46,7 @@ const SkyScreen = () => {
   ];
 
   useEffect(() => {
-    async function fetchCards() {
+    async function fetchNameplates() {
       try {
         const res = await fetch(`https://the13thgeek-nodejs.fly.dev/mainframe/get-available-nameplates`,
         //const response = await fetch(`http://localhost:8080/mainframe/showdown-scores`,
@@ -58,12 +58,12 @@ const SkyScreen = () => {
             }
           });
         const data = await res.json();
-        setCards(data.data.cards);
+        setNameplates(data.data.nameplates);
       } catch(e) {
-        console.error("Failed to fetch cards",e);
+        console.error("Failed to fetch nameplates",e);
       }
     }
-    fetchCards();
+    fetchNameplates();
   },[]);
 
   useEffect(() => {    

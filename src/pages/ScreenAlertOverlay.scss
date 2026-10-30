@@ -1,0 +1,95 @@
+#screen-alert-overlay {
+  position: relative;
+  width: 875px;
+  height: 75px;
+  border: #666 1px dotted;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  .lower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f2937;
+    color: #fff;
+    font: 600 24px/1 system-ui, sans-serif;
+    opacity: 0;
+  }
+
+  /* Idle / hidden: clipped to nothing at the center */
+  .upper {
+    clip-path: inset(0 50%);
+  }
+
+  /* The is-* phase class is on #screen-alert-overlay itself, so & is the parent here */
+
+  /* Intro */
+  &.is-opening .upper {
+    animation: reveal 600ms ease-out forwards; /* OPEN_MS */
+  }
+  /* Fully visible */
+  &.is-holding .upper {
+    clip-path: none;
+  }
+  /* Outro: a gap opens at the center and grows toward both sides */
+  &.is-closing .upper {
+    animation: conceal 600ms ease-in forwards; /* CLOSE_MS */
+  }
+
+  &.is-closing .lower,
+  &.is-showing .lower {
+    opacity: 1;
+  }
+  &.is-clearing .lower {
+    opacity: 0;
+    transition: opacity 400ms ease; /* CLEAR_MS */
+  }
+
+  .checkin {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .checkin_img {
+    height: 70px;
+    aspect-ratio: 4/1;
+  }
+  .checkin_name {
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .checkin_info {
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font: 700 130px/60px system-ui, sans-serif;
+
+    span {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@keyframes reveal {
+  from { clip-path: inset(0 50%); }
+  to   { clip-path: inset(0 0); }
+}
+
+/* Same 8-point polygon at both ends so it interpolates; the gap grows from the center. */
+@keyframes conceal {
+  from { clip-path: polygon(0 0, 50% 0, 50% 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 0 100%); }
+  to   { clip-path: polygon(0 0, 0 0, 0 100%, 100% 100%, 100% 0, 100% 0, 100% 100%, 0 100%); }
+}

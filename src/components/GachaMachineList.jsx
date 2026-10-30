@@ -1,15 +1,15 @@
 import React from 'react';
 import './GachaMachineList.scss';
 
-const GachaMachineList = ({ cards }) => {
+const GachaMachineList = ({ nameplates }) => {
 
   return (
     <div className='banner gacha-list'>
-      {cards.length > 0 ? (
+      {nameplates.length > 0 ? (
         <ul className="card-list">
-          {cards.map((card) => (
-            <li key={card.id} className='card-thumb'>
-              <img src={'/browsersrc-mainframe/img/cards/' + card.sysname + '-thumb.png'} alt="card" />
+          {nameplates.map((nameplate) => (
+            <li key={nameplate.id} className='card-thumb'>
+              <img src={`/browsersrc-mainframe/img/cards/${nameplate.sysname}-thumb.png`} alt={nameplate.name} />
             </li>
           ))}
         </ul>
